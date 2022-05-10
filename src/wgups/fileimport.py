@@ -3,6 +3,7 @@ import csv
 
 # Internal Modules
 import package
+import distancegraph
 
 
 def receive_packages(filename, package_table):
@@ -37,7 +38,25 @@ def receive_packages(filename, package_table):
             package_table.insert(pckg)
 
 
-def test_import():
+def create_graph(filename, distance_graph):
+    with open(filename, newline='') as csvfile:
+        package_reader = csv.reader(csvfile, delimiter=',')
+        # Consume headers
+        print('\n'.join(next(package_reader)))
+        # Insert rows into_package_table
+        for row in package_reader:
+            print(row)
+
+
+def test_receive_package():
     packages = package.PackageHashTable(100)
     receive_packages('WGUPS Package File.csv', packages)
     print(packages)
+
+
+def test_create_graph():
+    citygraph = distancegraph.DistanceGraph()
+    create_graph('WGUPS Distance Table.csv',citygraph)
+
+
+test_create_graph()
