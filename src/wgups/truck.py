@@ -13,8 +13,8 @@ class Truck:
         self.mileage = 0
         self.package_list = package.PackageHashTable(100)
 
-    def deliver(self, package):
-        self.package_list.remove(package)
+    def deliver(self, item):
+        self.package_list.remove(item)
 
-    def load(self, package):
-        self.package_list.append(package)
+    def load(self, item):
+        self.package_list.append(item)
