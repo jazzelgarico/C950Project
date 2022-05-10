@@ -2,14 +2,14 @@ class Location:
     """Models a location in the delivery area.
 
     Attributes:
-        full_address: the full address of the location
+        label: the full address of the location
     """
 
-    def __init__(self, full_address):
-        self.full_address = full_address
+    def __init__(self, label):
+        self.label = label
 
     def __str__(self):
-        return f"Location({self.full_address})"
+        return f"Location({self.label})"
 
 
 class DistanceGraph:
@@ -55,19 +55,19 @@ class DistanceGraph:
         self.distance_dict[location_a][location_b] = distance
         self.distance_dict[location_b][location_a] = distance
 
-
-saltlake = DistanceGraph()
-l1 = Location("Museum")
-l2 = Location("Church")
-l3 = Location("School")
-l4 = Location("Town Hall")
-saltlake.add_location(l1)
-saltlake.add_location(l2)
-saltlake.add_location(l3)
-saltlake.add_location(l4)
-print(saltlake)
-saltlake.add_route(l1, l2, 1.0)
-saltlake.add_route(l1, l3, 1.5)
-saltlake.add_route(l2, l3, 3.2)
-saltlake.add_route(l2, l4, 5.7)
-print(saltlake)
+def test_distance_graph():
+    saltlake = DistanceGraph()
+    l1 = Location("Museum")
+    l2 = Location("Church")
+    l3 = Location("School")
+    l4 = Location("Town Hall")
+    saltlake.add_location(l1)
+    saltlake.add_location(l2)
+    saltlake.add_location(l3)
+    saltlake.add_location(l4)
+    print(saltlake)
+    saltlake.add_route(l1, l2, 1.0)
+    saltlake.add_route(l1, l3, 1.5)
+    saltlake.add_route(l2, l3, 3.2)
+    saltlake.add_route(l2, l4, 5.7)
+    print(saltlake)
