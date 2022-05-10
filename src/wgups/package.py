@@ -3,15 +3,15 @@ class Package:
 
     Attributes
         package_id(int): id assigned to package
-        address: street address of delivery destination
-        city: city of delivery destination
-        state: two-letter state acronym of delivery destination
-        zip_code: zip code of delivery destination
+        address(str): street address of delivery destination
+        city(str): city of delivery destination
+        state(str): two-letter state acronym of delivery destination
+        zip_code(str): zip code of delivery destination
         delivery_deadline: deadline time for delivery
-        package_weight: weight of package in kilos
-        delivery_status: status of package ('At the hub',
+        package_weight(float): weight of package in kilos
+        delivery_status(str): status of package ('At the hub',
                          'En route', 'Delivered at [time]')
-        special_notes: additional notes for package
+        special_notes(str): additional notes for package
 
         """
     def __init__(self, package_id, address, city, state, zip_code,
