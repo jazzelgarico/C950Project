@@ -9,7 +9,7 @@ class Location:
         self.label = label
 
     def __str__(self):
-        return f"Location({self.label})"
+        return f"({self.label})"
 
 
 class DistanceGraph:
