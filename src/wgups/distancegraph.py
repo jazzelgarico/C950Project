@@ -43,7 +43,7 @@ class DistanceGraph:
         """
         self.distance_dict[new_location] = {}
 
-    def add_route(self, location_a, location_b, distance):
+    def add_path(self, location_a, location_b, distance):
         """Adds a route distance between two locations.
 
         Args:
@@ -54,6 +54,7 @@ class DistanceGraph:
         """
         self.distance_dict[location_a][location_b] = distance
         self.distance_dict[location_b][location_a] = distance
+
 
 def test_distance_graph():
     saltlake = DistanceGraph()
@@ -66,8 +67,8 @@ def test_distance_graph():
     saltlake.add_location(l3)
     saltlake.add_location(l4)
     print(saltlake)
-    saltlake.add_route(l1, l2, 1.0)
-    saltlake.add_route(l1, l3, 1.5)
-    saltlake.add_route(l2, l3, 3.2)
-    saltlake.add_route(l2, l4, 5.7)
+    saltlake.add_path(l1, l2, 1.0)
+    saltlake.add_path(l1, l3, 1.5)
+    saltlake.add_path(l2, l3, 3.2)
+    saltlake.add_path(l2, l4, 5.7)
     print(saltlake)
