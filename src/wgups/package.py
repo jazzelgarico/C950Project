@@ -36,13 +36,23 @@ class Package:
                 f"Delivery Status:   {self.delivery_status}\n"
                 f"Special Notes:     {self.special_notes}\n")
 
+    def update_delivery_status(self, new_status):
+        """Updates  a package's delivery status
+
+        Args:
+            new_status(str): the new delivery status of the package
+
+        """
+        self.delivery_status = new_status
+
 
 class PackageHashTable:
     """Stores packages into a hash table.
 
     Attributes:
-        capacity: number of buckets in the hash table
+        capacity(int): number of buckets in the hash table
         table: stores the buckets of the hash table
+
     """
     def __init__(self, capacity):
         self.table = []
@@ -62,7 +72,7 @@ class PackageHashTable:
         """Inserts a package into the hash table.
 
         Args:
-            package: package to insert into hash table]
+            package: package to insert into hash table
 
         """
         bucket = self._get_bucket(package.package_id)
@@ -73,7 +83,7 @@ class PackageHashTable:
         belongs.
 
         Args:
-             package_id: the package_id of the package
+             package_id(int): the package_id of the package
 
         Returns:
             the bucket to which the package with the package_id belongs
@@ -97,11 +107,12 @@ class PackageHashTable:
         """Searches for a package with the package_id in the table.
 
         Args:
-            package_id: the package_id of the package to search for
+            package_id(int): the package_id of the package to search for
 
         Returns:
             package with the package_id if it is in the table,
             otherwise None
+
         """
         bucket = self._get_bucket(package_id)
         for pckg in reversed(self.table[bucket]):
