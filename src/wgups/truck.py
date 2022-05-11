@@ -1,5 +1,7 @@
 # Internal Modules
 import package
+import fileimport
+import distancegraph
 
 
 class Truck:
@@ -11,10 +13,14 @@ class Truck:
     """
     def __init__(self):
         self.mileage = 0
-        self.package_list = package.PackageHashTable(100)
+        self.package_list = []
+        self.location = None
 
     def deliver(self, item):
+        item.update_delivery_status("Delivered")
         self.package_list.remove(item)
 
     def load(self, item):
         self.package_list.append(item)
+        item.update_delivery_status("En route")
+
