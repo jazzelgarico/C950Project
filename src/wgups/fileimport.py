@@ -40,12 +40,23 @@ def receive_packages(filename, package_table):
 
 def create_graph(filename, distance_graph):
     with open(filename, newline='') as csvfile:
-        package_reader = csv.reader(csvfile, delimiter=',')
+        distance_reader = csv.reader(csvfile, delimiter=',')
         # Consume headers
-        print('\n'.join(next(package_reader)))
+        next(distance_reader)
         # Insert rows into_package_table
-        for row in package_reader:
-            print(row)
+        locations = []
+        for row in distance_reader:
+            clean_label = row[1].replace("\n", " ").strip()
+            location = distancegraph.Location(clean_label)
+            locations.append(location)
+            distance_graph.add_location(location)
+            column = 2
+            while True:
+                if row[column] == "0.0":
+                    break
+                location_two = locations[column - 2]
+                distance_graph.add_route(location, location_two, row[column])
+                column += 1
 
 
 def test_receive_package():
@@ -56,7 +67,8 @@ def test_receive_package():
 
 def test_create_graph():
     citygraph = distancegraph.DistanceGraph()
-    create_graph('WGUPS Distance Table.csv',citygraph)
+    create_graph('WGUPS Distance Table.csv', citygraph)
+    print(citygraph)
 
 
 test_create_graph()
