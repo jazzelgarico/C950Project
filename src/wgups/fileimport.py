@@ -55,7 +55,7 @@ def create_graph(filename, distance_graph):
                 if row[column] == "0.0":
                     break
                 location_two = locations[column - 2]
-                distance_graph.add_route(location, location_two, row[column])
+                distance_graph.add_path(location, location_two, row[column])
                 column += 1
 
 
@@ -69,6 +69,3 @@ def test_create_graph():
     citygraph = distancegraph.DistanceGraph()
     create_graph('WGUPS Distance Table.csv', citygraph)
     print(citygraph)
-
-
-test_create_graph()
